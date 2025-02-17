@@ -4,7 +4,7 @@ body {
   background: radial-gradient(circle, rgba(189,10,10,1) 0%, rgba(121,24,24,1) 66%, rgba(0,0,0,1) 100%); ;
   color: whitesmoke;
   height: 779px;
-  border: 2px solid;
+  /* border: 2px solid; */
 }
 
 header h1 {
@@ -80,4 +80,19 @@ input {
   color: aliceblue;
   border: none;
   letter-spacing: .03rem;
+}
+
+.card-containers {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.card-div {
+  width: 21%;
+  background-color: rgb(189,10,10, 0.2);
+  margin: 1rem;
+  border-radius: 20px;
+  padding: 1rem;
+
 }
