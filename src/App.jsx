@@ -39,7 +39,7 @@ function App() {
       <div className='card-containers'>
         {loading && movieData.map((movie, movieIndex) => {
           return (
-            <Card key={movieIndex} title={movie.original_title} year={movie.release_date} img={movie.poster_path} rating={movie.vote_average} genres={movie.genre_ids}/>
+            <Card key={movieIndex} title={movie.title} year={movie.release_date} img={movie.poster_path} rating={movie.vote_average} genres={movie.genre_ids}/>
           )
         })}
       </div>

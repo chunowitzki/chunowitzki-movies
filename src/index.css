@@ -85,6 +85,7 @@ input {
 .card-containers {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
 }
 
@@ -95,4 +96,8 @@ input {
   border-radius: 20px;
   padding: 1rem;
 
+}
+
+.movie-image {
+  border-radius: 10px;
 }
