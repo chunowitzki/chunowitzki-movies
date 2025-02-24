@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import Card from './components/Card'
-
+import WatchList from './components/WatchList'
+import {BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import HomePage from './components/HomePage'
 
 
 function App() {
   const [loading, setLoading] = useState(false)
   const [movieData, setMovieData] = useState([])
+  const [watchList, setWatchList] = useState([])
+  const [watchListOn, setWatchListOn] = useState(false)
   
   useEffect(()=> {
     const options = {
@@ -31,18 +35,31 @@ function App() {
   }, [0])
 
   
+function addToWatchList(id) {
+  const newMovie = movieData.filter(movie => movie.id === id)[0]
+  !watchList.includes(newMovie) ? setWatchList(prev => [...prev, newMovie]) : ""
+  
+}
 
+function toggleWatchList(){
+  setLoading(prev => !prev)
+  setWatchListOn(prev => !prev)
+  
+}
  
   return (
     <>
-      <Header />
-      <div className='card-containers'>
-        {loading && movieData.map((movie, movieIndex) => {
-          return (
-            <Card key={movieIndex} title={movie.title} year={movie.release_date} img={movie.poster_path} rating={movie.vote_average} genres={movie.genre_ids}/>
-          )
-        })}
-      </div>
+      <BrowserRouter>
+        <Header toggleWatchList={toggleWatchList}/>
+        <div className='card-containers'>
+          <Routes>
+
+            <Route path="/" element={loading && <HomePage movieData={movieData} addToWatchList={addToWatchList}/>}/>
+            <Route path="/watchList" element={<WatchList watchList={watchList} addToWatchList={addToWatchList}/>}/>
+            
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   )
 }

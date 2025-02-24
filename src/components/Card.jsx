@@ -1,6 +1,6 @@
 
 export default function Card(props){
-    const { title, year, img , rating, genres } = props
+    const { title, year, img , rating, genres, addToWatchList, id } = props
 
     const genrez = [
         {
@@ -90,7 +90,7 @@ export default function Card(props){
             <div className="description-div">
                 <p>⭐️ {rating} ⁃ {year.slice(0,4)}</p>
                 <p>{filteredGenres.join(", ")}</p>
-                 <button className="watchList-button"> <i className="fa-solid fa-circle-plus"></i> Add to WatchList</button>
+                 <button className="watchList-button" onClick={() => addToWatchList(id)}> <i className="fa-solid fa-circle-plus"></i> Add to WatchList</button>
                 
             </div>
         </div>
