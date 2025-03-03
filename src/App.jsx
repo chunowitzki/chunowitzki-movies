@@ -10,7 +10,10 @@ import HomePage from './components/HomePage'
 function App() {
   const [loading, setLoading] = useState(false)
   const [movieData, setMovieData] = useState([])
-  const [watchList, setWatchList] = useState([])
+  const [watchList, setWatchList] = useState(()=> {
+    const storedMovies = localStorage.getItem('watchlist');
+    return storedMovies ? JSON.parse(storedMovies) : [];
+  })
   const [watchListOn, setWatchListOn] = useState(false)
   
   useEffect(()=> {
@@ -22,8 +25,8 @@ function App() {
       }
     };
 
-    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
-    .then(res => res.json())
+    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+    .then(res => res.json()) 
     .then(res => {
       setMovieData(res.results)
       console.log(res.results)
@@ -31,15 +34,25 @@ function App() {
     .catch(err => console.error(err));
 
     setLoading(true)
-    
+  
   }, [0])
+
+  // localStorage.clear()
+
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchList))
+    console.log("setting local storage")
+    console.log(watchList)
+  }, [watchList])
+  
 
   
 function addToWatchList(id) {
   const newMovie = movieData.filter(movie => movie.id === id)[0]
-  !watchList.includes(newMovie) ? setWatchList(prev => [...prev, newMovie]) : ""
+  !watchList.includes(newMovie) ? setWatchList(prev => [...prev, newMovie]) : ''
   
 }
+
 
 function toggleWatchList(){
   setLoading(prev => !prev)

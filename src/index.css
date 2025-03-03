@@ -7,13 +7,18 @@ body {
   /* border: 2px solid; */
 }
 
-header h1 {
+
+.header-Title {
   font-family: "Limelight", serif;
   margin: 0;
   width: 50%;
   letter-spacing: .03rem;
+  color: whitesmoke;
+  text-decoration: none;
   
 }
+
+
 
 header {
   background-image: url("/src/assets/movie\ copy.jpg");
@@ -80,6 +85,7 @@ input {
   color: aliceblue;
   border: none;
   letter-spacing: .03rem;
+  text-decoration: none;
 }
 
 .card-containers {
