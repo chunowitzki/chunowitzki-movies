@@ -53,6 +53,10 @@ function addToWatchList(id) {
   
 }
 
+function removeFromWatchList(id) {
+  setWatchList( prev => prev.filter(movie => movie.id !== id))
+  console.log(id)
+}
 
 function toggleWatchList(){
   setLoading(prev => !prev)
@@ -67,8 +71,8 @@ function toggleWatchList(){
         <div className='card-containers'>
           <Routes>
 
-            <Route path="/" element={loading && <HomePage movieData={movieData} addToWatchList={addToWatchList}/>}/>
-            <Route path="/watchList" element={<WatchList watchList={watchList} addToWatchList={addToWatchList}/>}/>
+            <Route path="/" element={loading && <HomePage movieData={movieData} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList}/>}/>
+            <Route path="/watchList" element={<WatchList watchList={watchList} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList}/>}/>
             
           </Routes>
         </div>
