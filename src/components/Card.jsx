@@ -91,7 +91,7 @@ export default function Card(props){
                 <p>⭐️ {rating} ⁃ {year.slice(0,4)}</p>
                 <p>{filteredGenres.join(", ")}</p>
                  <button className="watchList-button" onClick={() => addToWatchList(id)}> <i className="fa-solid fa-circle-plus"></i></button>
-                <button onClick={() => removeFromWatchList(id)}><i class="fa-solid fa-circle-minus"></i></button>
+                <button onClick={() => removeFromWatchList(id)}><i className="fa-solid fa-circle-minus"></i></button>
             </div>
         </div>
     )

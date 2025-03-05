@@ -67,7 +67,7 @@ function toggleWatchList(){
   return (
     <>
       <BrowserRouter>
-        <Header toggleWatchList={toggleWatchList}/>
+        <Header toggleWatchList={toggleWatchList} movieData={movieData} setMovieData={setMovieData}/>
         <div className='card-containers'>
           <Routes>
 
