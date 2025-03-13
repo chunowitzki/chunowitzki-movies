@@ -14,7 +14,7 @@ export default function Header(props) {
             }
           };
       
-          fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=2', options)
+          fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
           .then(res => res.json()) 
           .then(res => {
             setMovieData(res.results)
