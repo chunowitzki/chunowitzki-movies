@@ -21,7 +21,7 @@ body {
 
 
 header {
-  background-image: url("/src/assets/movie\ copy.jpg");
+  background-image: url("./movie-copy.jpg");
   background-size: cover;
   height: 208px;
   background-position: center;

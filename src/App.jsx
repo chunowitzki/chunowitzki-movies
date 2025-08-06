@@ -17,25 +17,26 @@ function App() {
   const [watchListOn, setWatchListOn] = useState(false)
   
   useEffect(()=> {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOGU4NzkwMGUwMWEzNzRiMGEwNmJiNTFkOTM5ZTJlNSIsIm5iZiI6MTczOTExNzYxNS4zNDYsInN1YiI6IjY3YThkNDJmNTcxZDcwN2YxNGM4ZGRmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2d8_aBluruQU-RWWLppcF9hdcIirK6x54fyPFGjbLQQ'
-      }
-    };
-
-    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-    .then(res => res.json()) 
-    .then(res => {
-      setMovieData(res.results)
+  //   const options = {
+  //     method: 'GET',
+  //     headers: {
+  //       accept: 'application/json',
+  //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOGU4NzkwMGUwMWEzNzRiMGEwNmJiNTFkOTM5ZTJlNSIsIm5iZiI6MTczOTExNzYxNS4zNDYsInN1YiI6IjY3YThkNDJmNTcxZDcwN2YxNGM4ZGRmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2d8_aBluruQU-RWWLppcF9hdcIirK6x54fyPFGjbLQQ'
+  //     }
+  //   };
+  setLoading(true)
+  fetch('https://api.themoviedb.org/3/movie/popular?api_key=9e6b1ece5d9160acd7f66bd6c337aef1&language=en-US&page=1')
+  .then(res => res.json()) 
+  .then(res => {
+    setMovieData(res.results)
+    setLoading(false)
       console.log(res.results)
     })
     .catch(err => console.error(err));
+    setLoading(false)
 
-    setLoading(true)
   
-  }, [0])
+  }, [])
 
   // localStorage.clear()
 
@@ -71,7 +72,7 @@ function toggleWatchList(){
         <div className='card-containers'>
           <Routes>
 
-            <Route path="/" element={loading && <HomePage movieData={movieData} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList}/>}/>
+            <Route path="/" element={!loading && <HomePage movieData={movieData} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList}/>}/>
             <Route path="/watchList" element={<WatchList watchList={watchList} addToWatchList={addToWatchList} removeFromWatchList={removeFromWatchList}/>}/>
             
           </Routes>
