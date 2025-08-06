@@ -97,7 +97,7 @@ input {
 
 .card-div {
   width: 21%;
-  background-color: rgb(189,10,10, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   margin: 1rem;
   border-radius: 20px;
   padding: 1rem;
