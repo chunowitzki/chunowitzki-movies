@@ -2,15 +2,15 @@ export default function SearchBar(props) {
     const { movieData, setMovieData } = props
     function search(formData){
         const query = formData.get('movieSearch')
-        const options = {
-            method: 'GET',
-            headers: {
-              accept: 'application/json',
-              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOGU4NzkwMGUwMWEzNzRiMGEwNmJiNTFkOTM5ZTJlNSIsIm5iZiI6MTczOTExNzYxNS4zNDYsInN1YiI6IjY3YThkNDJmNTcxZDcwN2YxNGM4ZGRmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2d8_aBluruQU-RWWLppcF9hdcIirK6x54fyPFGjbLQQ'
-            }
-          };
+        // const options = {
+        //     method: 'GET',
+        //     headers: {
+        //       accept: 'application/json',
+        //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOGU4NzkwMGUwMWEzNzRiMGEwNmJiNTFkOTM5ZTJlNSIsIm5iZiI6MTczOTExNzYxNS4zNDYsInN1YiI6IjY3YThkNDJmNTcxZDcwN2YxNGM4ZGRmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.2d8_aBluruQU-RWWLppcF9hdcIirK6x54fyPFGjbLQQ'
+        //     }
+        //   };
       
-          fetch(`https://api.themoviedb.org/3/search/movie?query=${query}`, options)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=9e6b1ece5d9160acd7f66bd6c337aef1&query=${query}&language=en-US&page=1`)
           .then(res => res.json()) 
           .then(res => {
             setMovieData(res.results)
